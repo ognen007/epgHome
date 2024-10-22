@@ -109,19 +109,25 @@ export const SidebarChildren = () => {
                 cursor="pointer" 
                 color="#000"
             >
-                Home
+                <Link to={"/"}>
+                    Home
+                </Link>
             </Text>
             <Text 
                 cursor="pointer" 
                 color="#000"
             >
-                Service
+                <Link to={"/service"}>
+                    Service
+                </Link>
             </Text>
             <Text 
                 cursor="pointer" 
                 color="#000"
             >
-                Our Projects
+                <Link to={"/projects"}>
+                    Service
+                </Link>
             </Text>
             <Box 
                 bg={"#000"} 
