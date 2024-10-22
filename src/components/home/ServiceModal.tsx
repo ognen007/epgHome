@@ -9,10 +9,16 @@ import {
 } from '@chakra-ui/react';
 import { FaHandshake, FaBolt, FaMapMarkerAlt } from 'react-icons/fa';
 import appointmentImg from '../../assets/appointments.png'; // Adjust the image path accordingly
+import { useInView } from 'react-intersection-observer';
 
 export const ServiceModal = () => {
+  const { ref, inView } = useInView({
+    threshold: 0.3,
+    triggerOnce: true,
+});
+
   return (
-    <Box w="100%" p={5} mx="auto" maxW="1200px">
+    <Box w="100%" p={5} mx="auto" maxW="1200px" ref={ref}>
       <Flex
       mt={"120px"}
         direction={['column', 'column', 'row']} // Column on small screens, row on large
@@ -21,7 +27,12 @@ export const ServiceModal = () => {
         gap={20} // Increased gap to create more space between text and image
       >
         {/* Left Side - Text Content */}
-        <Box flex="1">
+        <Box flex="1"
+                style={{
+                  opacity: inView ? 1 : 0,
+                  transform: inView ? "translateX(0)" : "translateX(-100px)",
+                  transition: "all 0.8s ease-out",
+                }}>
           <Heading as="h2" size="2xl" mb={4}>
             Not just a{' '}
             <Text as="span" color="#F37335">
@@ -85,7 +96,14 @@ export const ServiceModal = () => {
         </Box>
 
         {/* Right Side - Image Section */}
-        <Box flex="1" textAlign="center">
+        <Box 
+        flex="1" 
+        textAlign="center"
+        style={{
+          opacity: inView ? 1 : 0,
+          transform: inView ? "translateX(0)" : "translateX(100px)",
+          transition: "all 0.8s ease-out",
+        }}>
           <Image
             src={appointmentImg} // The image for the appointments
             alt="Appointments Image"

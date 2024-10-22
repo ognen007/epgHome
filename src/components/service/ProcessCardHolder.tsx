@@ -1,8 +1,13 @@
 import { Box, SimpleGrid, Heading, Text } from '@chakra-ui/react'
+import { useInView } from 'react-intersection-observer';
 
 export const ProcessCardHolder = () => {
+  const { ref, inView } = useInView({
+    threshold: 0.3,
+    triggerOnce: true,
+});
   return (
-    <Box p={10}>
+    <Box p={10} ref={ref}>
       <Text textAlign="center" fontSize="sm" color="gray.500" mb={4}>
         / THE PROCESS
       </Text>
@@ -17,7 +22,11 @@ export const ProcessCardHolder = () => {
           boxShadow="sm"
           border="1px solid"
           borderColor="gray.200"
-        >
+          style={{
+            opacity: inView ? 1 : 0,
+            transform: inView ? "translateX(0)" : "translateX(-100px)",
+            transition: "all 1s ease-out",
+          }}>
           <Heading fontSize="lg" mb={2}>
             Performance Partnership
           </Heading>
@@ -34,7 +43,11 @@ export const ProcessCardHolder = () => {
           boxShadow="sm"
           border="1px solid"
           borderColor="gray.200"
-        >
+          style={{
+            opacity: inView ? 1 : 0,
+            transform: inView ? "translateX(0)" : "translateX(-200px)",
+            transition: "all 1s ease-out",
+          }}>
           <Heading fontSize="lg" mb={2}>
             Area & Agent Exclusivity
           </Heading>
@@ -50,7 +63,11 @@ export const ProcessCardHolder = () => {
           boxShadow="sm"
           border="1px solid"
           borderColor="gray.200"
-        >
+          style={{
+            opacity: inView ? 1 : 0,
+            transform: inView ? "translateX(0)" : "translateX(-300px)",
+            transition: "all 1s ease-out",
+          }}>
           <Heading fontSize="lg" mb={2}>
             24/7 Personal Support Team
           </Heading>
@@ -66,7 +83,11 @@ export const ProcessCardHolder = () => {
           boxShadow="sm"
           border="1px solid"
           borderColor="gray.200"
-        >
+          style={{
+            opacity: inView ? 1 : 0,
+            transform: inView ? "translateX(0)" : "translateX(100px)",
+            transition: "all 1s ease-out",
+          }}>
           <Heading fontSize="lg" mb={2}>
             Custom CRM
           </Heading>
@@ -83,7 +104,11 @@ export const ProcessCardHolder = () => {
           boxShadow="sm"
           border="1px solid"
           borderColor="gray.200"
-        >
+          style={{
+            opacity: inView ? 1 : 0,
+            transform: inView ? "translateX(0)" : "translateX(200px)",
+            transition: "all 1s ease-out",
+          }}>
           <Heading fontSize="lg" mb={2}>
             Live Reporting
           </Heading>
@@ -100,7 +125,11 @@ export const ProcessCardHolder = () => {
           boxShadow="sm"
           border="1px solid"
           borderColor="gray.200"
-        >
+          style={{
+            opacity: inView ? 1 : 0,
+            transform: inView ? "translateX(0)" : "translateX(300px)",
+            transition: "all 1s ease-out",
+          }}>
           <Heading fontSize="lg" mb={2}>
             Qualified Appointments
           </Heading>

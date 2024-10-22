@@ -9,10 +9,15 @@ import {
   } from '@chakra-ui/react';
 import { FaHandshake, FaBolt, FaMapMarkerAlt } from 'react-icons/fa';
 import appointmentImg from '../../assets/appointments.png'; // Adjust the image path accordingly
+import { useInView } from 'react-intersection-observer';
 
 export const Nurture = () => {
+  const { ref, inView } = useInView({
+    threshold: 0.3,
+    triggerOnce: true,
+});
     return (
-        <Box w="100%" p={1} mt={"70px"} mx="auto" maxW="1200px">
+        <Box w="100%" p={1} mt={"70px"} mx="auto" maxW="1200px" ref={ref}>
       <Flex
       mt={"120px"}
         direction={['column', 'column', 'row']} // Column on small screens, row on large
@@ -21,7 +26,14 @@ export const Nurture = () => {
         gap={20} // Increased gap to create more space between text and image
       >    
             {/* Right Side - Image Section */}
-            <Box flex="1" textAlign="center">
+            <Box 
+            textAlign="center"
+            flex="1"
+            style={{
+              opacity: inView ? 1 : 0,
+              transform: inView ? "translateX(0)" : "translateX(-100px)",
+              transition: "all 1s ease-out",
+            }}>
               <Image
                 src={appointmentImg} // The image for the appointments
                 alt="Appointments Image"
@@ -31,7 +43,12 @@ export const Nurture = () => {
               />
             </Box>
                {/* Left Side - Text Content */}
-               <Box flex="1">
+               <Box flex="1"
+        style={{
+          opacity: inView ? 1 : 0,
+          transform: inView ? "translateX(0)" : "translateX(100px)",
+          transition: "all 1s ease-out",
+        }}>
           <Heading as="h2" size="2xl" mb={4}>
             Not just a{' '}
             <Text as="span" color="#F37335">

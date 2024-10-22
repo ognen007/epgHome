@@ -18,9 +18,14 @@ import image14 from '../../assets/projects/image14.png';
 import image15 from '../../assets/projects/image15.png';
 import image16 from '../../assets/projects/image16.png';
 import image17 from '../../assets/projects/image17.png';
+import { useInView } from 'react-intersection-observer';
 
 // Step 2: Create the ProjectHolder component
 export const ProjectHolder = () => {
+  const { ref, inView } = useInView({
+    threshold: 0.3,
+    triggerOnce: true,
+});
   // Array of imported images
   const projectImages = [
     image1, image2, image3, image4, image5, image6, image7, image8,
@@ -28,7 +33,7 @@ export const ProjectHolder = () => {
   ];
 
   return (
-    <Box padding="4" maxW="1200px" mx="auto" my="8">
+    <Box padding="4" maxW="1200px" mx="auto" my="8" ref={ref}>
       <Text fontSize="2xl" fontWeight="bold" textAlign="center" mb="8">
         Here are a few of the projects we've delivered to current and past clients
       </Text>
@@ -36,7 +41,17 @@ export const ProjectHolder = () => {
       {/* Step 3: Create the SimpleGrid layout for the images */}
       <SimpleGrid columns={[1, 2, 3]} spacing="8">
         {projectImages.map((image, index) => (
-          <Box key={index} borderWidth="1px" borderRadius="lg" overflow="hidden" shadow="md">
+          <Box 
+          key={index} 
+          borderWidth="1px" 
+          borderRadius="lg" 
+          overflow="hidden" 
+          shadow="md"
+          style={{
+            opacity: inView ? 1 : 0,
+            transform: inView ? "translateX(0)" : "translateX(-100px)",
+            transition: "all 2s ease-out",
+          }}  >
             <Image src={image} alt={`Project ${index + 1}`} width="100%" height="250px" objectFit="cover" />
           </Box>
         ))}

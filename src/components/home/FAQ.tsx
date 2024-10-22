@@ -8,6 +8,7 @@ import {
   AccordionIcon,
   Text,
 } from '@chakra-ui/react';
+import { useInView } from 'react-intersection-observer';
 
 // Sample FAQ data
 const faqs = [
@@ -67,6 +68,11 @@ const faqs = [
 ];
 
 export const FAQ = () => {
+  const { ref, inView } = useInView({
+    threshold: 0.3,
+    triggerOnce: true,
+});
+
   return (
     <Box
       w="100%"
@@ -75,8 +81,14 @@ export const FAQ = () => {
       alignItems="center"
       justifyContent="center"
       p={5}
+      ref={ref}
     >
-      <Box maxW="800px" w="100%" textAlign="center">
+      <Box maxW="800px" w="100%" textAlign="center"
+                style={{
+                  opacity: inView ? 1 : 0,
+                  transform: inView ? "translateY(0)" : "translateY(-100px)",
+                  transition: "all 0.8s ease-out",
+                }}>
         <Text fontSize="sm" color="gray.500" mb={2}>
           / FAQs
         </Text>

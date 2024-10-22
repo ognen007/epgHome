@@ -1,7 +1,13 @@
 import { Box, Flex, Heading, Text, Image, Button } from '@chakra-ui/react';
 import EmployeeImg from '../../assets/employe.png'; // Ensure correct image path
+import { useInView } from 'react-intersection-observer';
 
 export const CallSchedule = () => {
+  const { ref, inView } = useInView({
+    threshold: 0.3,
+    triggerOnce: true,
+});
+
   return (
     <Box
       w="100%"
@@ -9,6 +15,7 @@ export const CallSchedule = () => {
       mx="auto"
       bgGradient="linear(to-r, #f2a778, #ff8e4d)"
       color="white"
+      ref={ref}
     >
       <Flex
         direction={['column', 'column', 'row']}
@@ -19,7 +26,11 @@ export const CallSchedule = () => {
         mx="auto"
       >
         {/* Left Side - Larger Image */}
-        <Box flex="2"> {/* Increased flex value for larger image */}
+        <Box flex="2"
+                        style={{
+                          opacity: inView ? 1 : 0,
+                          transition: "all 3s ease-out",
+                        }}> {/* Increased flex value for larger image */}
           <Image
             src={EmployeeImg} // The image you uploaded
             alt="Schedule a call"
@@ -31,7 +42,11 @@ export const CallSchedule = () => {
         </Box>
 
         {/* Right Side - Text Content */}
-        <Box flex="1" textAlign={['center', 'center', 'left']}>
+        <Box flex="1" textAlign={['center', 'center', 'left']}
+            style={{
+               opacity: inView ? 1 : 0,
+              transition: "all 3s ease-out",
+            }}>
           <Text fontSize="sm" fontWeight="bold" mb={2}>
             LET'S CHAT
           </Text>
