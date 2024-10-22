@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Text, Flex, IconButton, Divider, Stack, Image } from '@chakra-ui/react';
 import { FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa';
 import EPG from "../../assets/epg-logo.png";
