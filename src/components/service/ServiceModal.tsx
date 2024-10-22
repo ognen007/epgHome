@@ -4,7 +4,6 @@ import {
   Heading,
   Text,
   Image,
-  Stack,
   Icon,
 } from '@chakra-ui/react';
 import { FaHandshake, FaBolt, FaMapMarkerAlt } from 'react-icons/fa';
