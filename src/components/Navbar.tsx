@@ -46,12 +46,11 @@ export const Navbar = () => {
       p={"8px"}
       borderRadius={"15px"}
       >
-        <Text 
-            mx={4} 
-            cursor="pointer" 
-        >
-            Contact Us
-        </Text>
+        <a href="mailto:rob@epg.build" style={{ textDecoration: 'none', color: 'white' }}>
+            <Text  cursor="pointer">
+                Contact Us
+            </Text>
+        </a>
       </Box>
     </Flex>
   );
@@ -98,12 +97,13 @@ export const SidebarChildren = () => {
     return (
         <Box 
             display="flex" 
+            flexDirection="column" // Stack items vertically
             justifyContent="center" 
             alignItems="center" 
             p={4} 
             borderRadius="md" 
             mt={2}
-            gap={8} // This will add space between the items
+            gap={4} // Adjust gap between the items
         >
             <Text 
                 cursor="pointer" 
@@ -126,15 +126,18 @@ export const SidebarChildren = () => {
             <Box 
                 bg={"#000"} 
                 color="#fff" 
-                p={"8px"} 
+                p={"10px"} 
                 borderRadius={"15px"}
             >
-                <Text 
-                    cursor="pointer"
-                >
-                    Contact Us
-                </Text>
+                <a href="mailto:rob@epg.build" style={{ textDecoration: 'none', color: 'white' }}>
+                    <Text 
+                        cursor="pointer"
+                    >
+                        Contact Us
+                    </Text>
+                </a>
             </Box>
         </Box>
     );
 };
+
