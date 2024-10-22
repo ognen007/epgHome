@@ -1,5 +1,4 @@
 import { Box, Grid, Heading, Text } from '@chakra-ui/react';
-import React from 'react';
 import { useInView } from 'react-intersection-observer';
 
 export const Client = () => {
