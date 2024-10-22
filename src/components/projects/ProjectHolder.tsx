@@ -1,5 +1,4 @@
 import { Box, SimpleGrid, Image, Text } from '@chakra-ui/react';
-import React from 'react';
 
 // Step 1: Import each image explicitly
 import image1 from '../../assets/projects/image1.png';
