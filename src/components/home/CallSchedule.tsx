@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Flex, Heading, Text, Image, Button } from '@chakra-ui/react';
 import EmployeeImg from '../../assets/employee.png'; // Ensure correct image path
 
