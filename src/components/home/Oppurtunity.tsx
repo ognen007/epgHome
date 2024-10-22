@@ -1,4 +1,4 @@
-import { Box, Grid, Text, Button } from '@chakra-ui/react';
+import { Box, Grid, Text } from '@chakra-ui/react';
 import { Card } from '../common/Card';
 import { useInView } from 'react-intersection-observer';
 
