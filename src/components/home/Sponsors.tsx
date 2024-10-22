@@ -1,4 +1,4 @@
-import { Box, Flex, Img } from '@chakra-ui/react'
+import { Flex, Img } from '@chakra-ui/react'
 import Collaborators from "../../assets/collaborators.png"
 
 export const Sponsors = () => {
