@@ -4,7 +4,6 @@ import {
   Heading,
   Text,
   Image,
-  Icon,
 } from '@chakra-ui/react';
 import { FaHandshake, FaBolt, FaMapMarkerAlt } from 'react-icons/fa';
 import appointmentImg from '../../assets/appointments.png'; // Adjust the image path accordingly
